@@ -1,0 +1,23 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.MainView.ViewPanel" x:Name="ViewPanelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:core="clr-namespace:Appear.Core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Appear.Controls.Panels.MainView"
+             xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons" 
+             xmlns:conv="clr-namespace:Appear.Converters"
+             Width="150">
+    <UserControl.Resources>
+        <conv:BooleanInverter x:Key="invert"></conv:BooleanInverter>
+    </UserControl.Resources>
+    
+    <Border CornerRadius="20" Background="White" Margin="10,5">
+        <StackPanel Margin="10" Orientation="Vertical" DataContext="{Binding ElementName=ViewPanelControl}">
+            <butt:TextButton Size="100" Text="SCENES" Action="SwitchView" IsEnabled="{Binding IsScenesMode, Converter={StaticResource invert}}"></butt:TextButton>
+            <butt:TextButton Size="100" Text="EXTENSIONS" Action="SwitchView" IsEnabled="{Binding IsExtensionsMode, Converter={StaticResource invert}}"></butt:TextButton>
+            <butt:TextButton Size="100" Text="FOLDERS" Action="SwitchView" IsEnabled="{Binding IsFoldersMode, Converter={StaticResource invert}}"></butt:TextButton>
+            <butt:TextButton Size="100" Text="TAGS" Action="SwitchView" IsEnabled="{Binding IsTagsMode, Converter={StaticResource invert}}"></butt:TextButton>
+        </StackPanel>
+    </Border>
+</core:ObservableControl>

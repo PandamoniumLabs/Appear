@@ -1,0 +1,11 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.MainView.PresenterControlPanel" x:Name="PresenterController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:core="clr-namespace:Appear.Core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:img="clr-namespace:Appear.Controls.Components.Image">
+    <StackPanel DataContext="{Binding ElementName=PresenterController}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <img:ImagePresenter Path="{Binding Path}" ImageHeight="{Binding ImageHeight}" ImageWidth="{Binding ImageWidth}"></img:ImagePresenter>
+    </StackPanel>
+</core:ObservableControl>

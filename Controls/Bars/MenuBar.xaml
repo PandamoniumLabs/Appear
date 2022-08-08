@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Appear.Controls.Bars.MenuBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons">
+
+    <Border Style="{StaticResource BarDefault}">
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                <butt:IconButton Icon="info" Action="OpenInfo"></butt:IconButton>
+                <butt:IconButton Icon="max" Action="MaxMain"></butt:IconButton>
+                <butt:IconButton Icon="exit" Action="CloseMain"></butt:IconButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <butt:TextButton Text="ASSETS" Action="OpenAssets" Size="100"></butt:TextButton>
+                <butt:TextButton Text="OPTIONS" Action="OpenStyles" Size="100"></butt:TextButton>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</UserControl>

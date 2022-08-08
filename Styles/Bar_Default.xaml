@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <CornerRadius x:Key="Corner_Bar">20,20,0,0</CornerRadius>
+    <SolidColorBrush x:Key="Background_Bar">White</SolidColorBrush>
+
+    <Style x:Key="BarDefault" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource Corner_Bar}"/>
+        <Setter Property="Padding" Value="15,0"/>
+        <Setter Property="Height" Value="60"/>
+    </Style>
+
+    <Style x:Key="BarDialog" TargetType="Border" BasedOn="{StaticResource BarDefault}">
+        <Setter Property="Background" Value="{DynamicResource Background_Bar}"/>
+        <Setter Property="CornerRadius" Value="20,20,0,0"/>
+        <Setter Property="Height" Value="40"/>
+    </Style>
+</ResourceDictionary>

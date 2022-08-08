@@ -1,0 +1,32 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.PresentView.AutoPanel" x:Name="AutoPanelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons"
+             mc:Ignorable="d"
+             xmlns:core="clr-namespace:Appear.Core">
+    <Grid DataContext="{Binding ElementName=AutoPanelControl}" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="3" FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Center" Text="Next in" Grid.Column="0" Grid.Row="0"></TextBlock>
+        <TextBlock Grid.ColumnSpan="3" FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Center" Text="{Binding Time}" Grid.Column="0" Grid.Row="1"></TextBlock>
+
+        <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Next After (s):" Grid.Column="0" Grid.Row="3"></TextBlock>
+        <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Enable Auto Play:" Grid.Column="0" Grid.Row="4"></TextBlock>
+
+        <TextBox Text="{Binding Time, Mode=OneTime}" TextChanged="OnTimeBoxTextChanged" Grid.Column="2" Grid.Row="3"></TextBox>
+        <butt:CheckBoxButton Grid.Column="2" Grid.Row="4" Id="StartAuto" IsChecked="{Binding IsPlaying, Mode=TwoWay}"></butt:CheckBoxButton>
+    </Grid>
+</core:ObservableControl>

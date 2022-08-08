@@ -1,0 +1,36 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.PresentView.ManualPanel" x:Name="ManualPanelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons"
+             xmlns:core="clr-namespace:Appear.Core">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <WrapPanel>
+                <Image 
+                    Width="80" 
+                    Stretch="Uniform"
+                    Source="{Binding Path}">  
+                </Image>
+            </WrapPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" Margin="0,10,0,0" CanVerticallyScroll="True" HorizontalAlignment="Center">
+        <ListView Margin="10" ItemsSource="{Binding Assets}" Width="Auto"
+                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnAssetSelectionChanged" Height="200">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid  DataContext="{Binding ElementName=ManualPanelControl}" Columns="3" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding ElementName=ManualPanelControl}">
+            <butt:IconButton Icon="left" Action="PreviousAsset"></butt:IconButton>
+            <butt:TextButton Text="PRESENT" Action="SelectedAsset" IsEnabled="{Binding HasSelection}"></butt:TextButton>
+            <butt:IconButton Icon="right" Action="NextAsset"></butt:IconButton>
+        </StackPanel>
+    </StackPanel>
+    
+</core:ObservableControl>

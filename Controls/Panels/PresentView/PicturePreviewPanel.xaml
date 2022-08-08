@@ -1,0 +1,39 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.PresentView.PicturePreviewPanel" x:Name="PicturePreviewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:Appear.Core">
+    <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal" DataContext="{Binding ElementName=PicturePreviewControl}">
+        <Border HorizontalAlignment="Center" Background="LightGray" Opacity="0.8" Height="140" Width="140" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Image Margin="0,10" 
+            Source="{Binding PreviousPath}"
+            Stretch="Uniform" 
+            Height="120" 
+            Width="120">
+            </Image>
+            <Border.CornerRadius>10</Border.CornerRadius>
+            <Border.BorderThickness>1</Border.BorderThickness>
+        </Border>
+        <Border Margin="5,0" Height="180" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray"  Width="180">
+            <Border.CornerRadius>10</Border.CornerRadius>
+            <Border.BorderThickness>1</Border.BorderThickness>
+            <Image Margin="0,5"
+                Source="{Binding CurrentPath}"
+                Stretch="Uniform" 
+                Height="170" 
+                Width="170">
+            </Image>
+        </Border>
+        <Border HorizontalAlignment="Center" Background="LightGray" Opacity="0.8" Height="140" Width="140" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Image Margin="0,10"
+            Source="{Binding NextPath}"
+            Stretch="Uniform" 
+            Height="120" 
+            Width="120">
+            </Image>
+            <Border.CornerRadius>10</Border.CornerRadius>
+            <Border.BorderThickness>1</Border.BorderThickness>
+        </Border>
+    </StackPanel>
+</core:ObservableControl>

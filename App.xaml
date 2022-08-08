@@ -1,0 +1,20 @@
+﻿<Application x:Class="Appear.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Appear"
+             StartupUri="MainWindow.xaml"
+             xmlns:props="clr-namespace:Appear.Properties">
+    <Application.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ListDefault.xaml"/>
+                <ResourceDictionary Source="Styles/ButtonDefault.xaml"/>
+                <ResourceDictionary Source="Styles/WindowDefault.xaml"/>
+                <ResourceDictionary Source="Styles/Bar_Default.xaml"/>
+                <ResourceDictionary Source="Styles/TextDefault.xaml"/>
+                <ResourceDictionary Source="../Assets/Icons/icons.xaml"/>
+                <ResourceDictionary Source="../Assets/Source/source.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

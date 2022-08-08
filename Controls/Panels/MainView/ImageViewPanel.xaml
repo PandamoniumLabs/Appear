@@ -1,0 +1,40 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Panels.MainView.ImageViewPanel" x:Name="ImageViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Appear.Controls.Panels.MainView"
+             mc:Ignorable="d"
+             xmlns:list="clr-namespace:Appear.Controls.Components.List"
+             xmlns:conv="clr-namespace:Appear.Converters"
+             xmlns:core="clr-namespace:Appear.Core"
+             xmlns:panel="clr-namespace:Appear.Controls.Panels.MainView">
+
+    <UserControl.Resources>
+        <conv:HeightToActualHeightConverter x:Key="reduceHeight"></conv:HeightToActualHeightConverter>
+        <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
+        <core:ValueConverterGroup x:Key="isVisibleInvert">
+            <conv:BooleanInverter></conv:BooleanInverter>
+            <conv:BooleanToVisibilityConverter></conv:BooleanToVisibilityConverter>
+        </core:ValueConverterGroup>
+        <DataTemplate x:Key="ListTemplate" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="10,5,0,0" Text="{Binding Path}" FontSize="16" Style="{StaticResource TextDefault}">
+                </TextBlock>
+                <list:ImageGrid Source="{Binding Assets}"></list:ImageGrid>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <DockPanel DataContext="{Binding ElementName=ImageViewControl}">
+        <panel:ViewCreatePanel DockPanel.Dock="Top" Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></panel:ViewCreatePanel>
+        <ListView Margin="20,0" HorizontalAlignment="Center" Visibility="{Binding HasAssets, Converter={StaticResource isVisible}}"
+                  DataContext="{Binding ElementName=ImageViewControl}" 
+                  ScrollViewer.CanContentScroll="False"
+                  ItemsSource="{Binding Collection}" 
+                  SelectionChanged="OnAssetListSelectionChanged"
+                  ItemTemplate="{StaticResource ListTemplate}"  
+                  Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},Path=ActualHeight, Converter={StaticResource reduceHeight}}">
+        </ListView>
+    </DockPanel>
+</core:ObservableControl>

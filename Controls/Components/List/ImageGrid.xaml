@@ -1,0 +1,39 @@
+﻿<core:ObservableControl x:Class="Appear.Controls.Components.List.ImageGrid" x:Name="ImageGridControl"
+             xmlns:src="clr-namespace:Appear.Core"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:Appear.Converters"
+             xmlns:core="clr-namespace:Appear.Core">
+    <UserControl.Resources>
+        <conv:DisplayWidthToDoubleConverter x:Key="toDouble"></conv:DisplayWidthToDoubleConverter>
+
+        <DataTemplate x:Key="ItemTemplate">
+            <!--<WrapPanel>
+                <Image Source="{Binding Path}" 
+                       Width="{Binding DisplayWidth, ElementName=ImageGridControl, Converter={StaticResource toDouble}}"/>
+            </WrapPanel>-->
+            <Image Width="{Binding DisplayWidth, ElementName=ImageGridControl, Converter={StaticResource toDouble}}">
+                <Image.Source>
+                    <BitmapImage
+                            DecodePixelWidth="256"
+                            UriSource="{Binding Path, Mode=OneWay,UpdateSourceTrigger=Explicit}" 
+                            CreateOptions="DelayCreation" 
+                            CacheOption="None"  />
+                </Image.Source>
+            </Image>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ListView Margin="10" ItemsSource="{Binding Assets}" DataContext="{Binding ElementName=ImageGridControl}"
+                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnAssetSelectionChanged" Height="Auto">
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid DataContext="{Binding ElementName=ImageGridControl}" Width="{Binding ViewWidth}" 
+                             Columns="{Binding ColumnCount}" />
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+    </ListView>
+
+</core:ObservableControl>
